@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">WaterDrop</string>
+    <string name="home">Home</string>
+    <string name="catalog">Catalog</string>
+    <string name="basket">Basket</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
+    <string name="add_to_cart_button">Add to cart button</string>
+    <string name="search_on_vodovoz">Search on Vodovoz</string>
+    <string name="customers_choice">Customers Choice</string>
+    <string name="water">Water</string>
+    <string name="coolers">Coolers</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WaterDrop</string>
+    <string name="home">Главная</string>
+    <string name="catalog">Каталог</string>
+    <string name="basket">Корзина</string>
+    <string name="favorites">Избранное</string>
+    <string name="profile">Профиль</string>
+    <string name="add_to_cart_button">Кнопка добавления в корзину</string>
+    <string name="search_on_vodovoz">Искать на Vodovoz</string>
+    <string name="customers_choice">Выбор покупателей</string>
+    <string name="water">Вода</string>
+    <string name="coolers">Кулеры</string>
+</resources>
