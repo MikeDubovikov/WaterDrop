@@ -28,12 +28,18 @@ android {
             )
         }
     }
+    
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
+
     kotlinOptions {
         jvmTarget = "21"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -49,9 +55,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)
     implementation(libs.okhttp.logging.interceptor)
-    implementation(libs.room.ktx)
-    implementation(libs.room.runtime)
-    ksp(libs.room.compiler)
     implementation(libs.serialization.json)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.fragment)
