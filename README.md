@@ -14,4 +14,4 @@
 
 ### Видео демонстрация
 
-![WaterDropPreview.gif](..%2F..%2F..%2F..%2FWaterDropPreview.gif)
+![WaterDropPreview.gif](assets/WaterDropPreview.gif)
