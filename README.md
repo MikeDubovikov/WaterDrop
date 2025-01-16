@@ -3,6 +3,7 @@
 Приложения показывает простой список данных, которые получаются из json.
 
 Технологический стек:
+
 - Android SDK
 - [Android Jetpack](https://developer.android.com/jetpack)
 - [Kotlin 2.0](https://kotlinlang.org/docs/whatsnew20.html)
@@ -14,4 +15,4 @@
 
 ### Видео демонстрация
 
-![WaterDropPreview.gif](assets/WaterDropPreview.gif)
+<img src="assets/WaterDropPreview.gif" width="33%">
