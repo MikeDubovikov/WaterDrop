@@ -8,6 +8,8 @@ import com.mdubovikov.waterdrop.domain.model.Goods
 
 class GoodsItemViewHolder(
     private val binding: ItemCardBinding,
+    private val onClickItem: ((goods: Goods) -> Unit)?
+
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(goods: Goods) {
@@ -17,8 +19,9 @@ class GoodsItemViewHolder(
             Glide.with(ivItem)
                 .load(Uri.parse(goods.image))
                 .into(ivItem)
+            root.setOnClickListener { onClickItem?.let { item -> item(goods) } }
 
-            tvPrice.text = goods.price.toString()
+            tvPrice.text = goods.price
         }
     }
 }

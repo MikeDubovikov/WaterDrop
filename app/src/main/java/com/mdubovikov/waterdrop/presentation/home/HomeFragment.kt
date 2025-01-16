@@ -10,10 +10,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import com.mdubovikov.waterdrop.R
 import com.mdubovikov.waterdrop.WaterDropApp
+import com.mdubovikov.waterdrop.common.Categories
 import com.mdubovikov.waterdrop.common.Result
 import com.mdubovikov.waterdrop.common.ViewModelFactory
 import com.mdubovikov.waterdrop.databinding.FragmentHomeBinding
+import com.mdubovikov.waterdrop.domain.model.Brand
+import com.mdubovikov.waterdrop.domain.model.Goods
+import com.mdubovikov.waterdrop.presentation.adapter.BrandAdapter
 import com.mdubovikov.waterdrop.presentation.adapter.GoodsAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -27,11 +33,13 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var goodsAdapter: GoodsAdapter
 
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
     }
+
+    private val goodsAdapter by lazy { GoodsAdapter(::onItemClick) }
+    private val brandsAdapter by lazy { BrandAdapter() }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -41,15 +49,33 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        goodsAdapter = GoodsAdapter()
-        binding.rvGoods.adapter = goodsAdapter
+        with(binding) {
+            rvGoods.adapter = goodsAdapter
+            rvBrands.adapter = brandsAdapter
+            tabCustomersChoice.setOnClickListener {
+                switchCategory(Categories.CUSTOMERS_CHOICE)
+                highlightActiveCategory(Categories.CUSTOMERS_CHOICE)
+            }
+
+            tabWater.setOnClickListener {
+                switchCategory(Categories.WATER)
+                highlightActiveCategory(Categories.WATER)
+            }
+
+            tabCoolers.setOnClickListener {
+                switchCategory(Categories.COOLERS)
+                highlightActiveCategory(Categories.COOLERS)
+            }
+        }
+
+        highlightActiveCategory(viewModel.selectedCategory.value)
         loadData()
     }
 
@@ -61,26 +87,68 @@ class HomeFragment : Fragment() {
                     with(binding) {
                         when (goods) {
                             is Result.Pending -> {
-//                                progressBar.visibility = View.VISIBLE
-//                                rvMeals.visibility = View.GONE
-//                                tvMealsNotFound.visibility = View.GONE
-//                                tvMealsError.visibility = View.GONE
-
+                                progressBar.visibility = View.VISIBLE
                             }
 
                             is Result.Success -> {
-                                goodsAdapter.submitList(Result.Success.value)
+                                progressBar.visibility = View.GONE
+                                rvGoods.visibility = View.VISIBLE
+                                goodsAdapter.submitList(goods.value)
+                                brandsAdapter.submitList(
+                                    listOf(
+                                        Brand(1, "Brand #1"),
+                                        Brand(2, "Brand #2"),
+                                        Brand(3, "Brand #3"),
+                                        Brand(4, "Brand #4"),
+                                        Brand(5, "Brand #5")
+                                    )
+                                )
                             }
 
                             is Result.Error -> {
-//                                tvMealsError.visibility = View.VISIBLE
-//                                progressBar.visibility = View.GONE
+                                progressBar.visibility = View.GONE
+                                rvGoods.visibility = View.GONE
                             }
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun switchCategory(category: Categories) {
+        viewModel.switchCategory(category)
+    }
+
+    private fun highlightActiveCategory(category: Categories) {
+        with(binding) {
+            tvCustomersChoice.setTextColor(requireContext().getColor(R.color.black))
+            tvWater.setTextColor(requireContext().getColor(R.color.black))
+            tvCoolers.setTextColor(requireContext().getColor(R.color.black))
+
+            when (category) {
+                Categories.CUSTOMERS_CHOICE -> {
+                    tvCustomersChoice.setTextColor(requireContext().getColor(R.color.light_blue))
+                }
+
+                Categories.WATER -> {
+                    tvWater.setTextColor(requireContext().getColor(R.color.light_blue))
+                }
+
+                Categories.COOLERS -> {
+                    tvCoolers.setTextColor(requireContext().getColor(R.color.light_blue))
+                }
+            }
+        }
+    }
+
+    private fun onItemClick(goods: Goods) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+            goodsId = goods.id,
+            goodsPrice = goods.price,
+            goodsImage = goods.image
+        )
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

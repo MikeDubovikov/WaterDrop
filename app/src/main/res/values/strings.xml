@@ -10,4 +10,12 @@
     <string name="customers_choice">Customers Choice</string>
     <string name="water">Water</string>
     <string name="coolers">Coolers</string>
+    <string name="basket_screen">Basket screen</string>
+    <string name="catalog_screen">Catalog screen</string>
+    <string name="favorites_screen">Favorites screen</string>
+    <string name="profile_screen">Profile screen</string>
+    <string name="brands">Brands</string>
+    <string name="all">All</string>
+    <string name="price">Price</string>
+    <string name="id">Id</string>
 </resources>

@@ -24,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="@color/light_grey"
+        app:itemActiveIndicatorStyle="@color/light_grey"
         app:itemIconTint="@drawable/bottom_nav_color"
         app:itemRippleColor="@color/light_blue"
         app:itemTextColor="@drawable/bottom_nav_color"

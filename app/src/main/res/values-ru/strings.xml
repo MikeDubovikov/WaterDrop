@@ -11,4 +11,12 @@
     <string name="customers_choice">Выбор покупателей</string>
     <string name="water">Вода</string>
     <string name="coolers">Кулеры</string>
+    <string name="basket_screen">Экран корзины</string>
+    <string name="catalog_screen">Экран каталога</string>
+    <string name="favorites_screen">Экран избранных</string>
+    <string name="profile_screen">Экран профиля</string>
+    <string name="brands">Бренды</string>
+    <string name="all">См. все</string>
+    <string name="price">Цена</string>
+    <string name="id">Id</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.mdubovikov.waterdrop.domain.model
 
-data class Goods(
+data class Brand(
     val id: Long,
-    val image: String,
-    val price: String
+    val name: String
 )

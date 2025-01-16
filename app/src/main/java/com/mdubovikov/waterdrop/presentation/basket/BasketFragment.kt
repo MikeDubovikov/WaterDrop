@@ -16,7 +16,7 @@ class BasketFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBasketBinding.inflate(inflater, container, false)
         return binding.root
     }

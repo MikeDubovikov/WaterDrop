@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding
-        get() = _binding ?: throw IllegalStateException("Fragment $this binding cannot be accessed")
+        get() = _binding ?: throw IllegalStateException("Activity $this binding cannot be accessed")
 
     private val component by lazy {
         (application as WaterDropApp).applicationComponent

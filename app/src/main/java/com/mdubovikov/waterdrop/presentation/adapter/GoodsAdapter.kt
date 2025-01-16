@@ -7,6 +7,7 @@ import com.mdubovikov.waterdrop.databinding.ItemCardBinding
 import com.mdubovikov.waterdrop.domain.model.Goods
 
 class GoodsAdapter(
+    private val onClickItem: ((goods: Goods) -> Unit)?
 ) : ListAdapter<Goods, GoodsItemViewHolder>(GoodsItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoodsItemViewHolder {
@@ -17,11 +18,11 @@ class GoodsAdapter(
             false
         )
 
-        return GoodsItemViewHolder(binding)
+        return GoodsItemViewHolder(binding, onClickItem)
     }
 
     override fun onBindViewHolder(holder: GoodsItemViewHolder, position: Int) {
-        val meal = getItem(position)
-        holder.bind(meal)
+        val goods = getItem(position)
+        holder.bind(goods)
     }
 }
