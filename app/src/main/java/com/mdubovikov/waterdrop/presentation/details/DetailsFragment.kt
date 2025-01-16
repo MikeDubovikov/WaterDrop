@@ -30,8 +30,8 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            goodsId.text = "${R.string.id}: ${args.goodsId}"
-            goodsPrice.text = "${R.string.price}: ${args.goodsPrice}"
+            goodsId.text = "${resources.getText(R.string.id)}: ${args.goodsId}"
+            goodsPrice.text = "${resources.getText(R.string.price)}: ${args.goodsPrice}"
             Glide.with(goodsImage)
                 .load(Uri.parse(args.goodsImage))
                 .into(goodsImage)

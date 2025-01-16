@@ -96,11 +96,11 @@ class HomeFragment : Fragment() {
                                 goodsAdapter.submitList(goods.value)
                                 brandsAdapter.submitList(
                                     listOf(
-                                        Brand(1, "Brand #1"),
-                                        Brand(2, "Brand #2"),
-                                        Brand(3, "Brand #3"),
-                                        Brand(4, "Brand #4"),
-                                        Brand(5, "Brand #5")
+                                        Brand(1, "Бренд #1"),
+                                        Brand(2, "Бренд #2"),
+                                        Brand(3, "Бренд #3"),
+                                        Brand(4, "Бренд #4"),
+                                        Brand(5, "Бренд #5")
                                     )
                                 )
                             }
