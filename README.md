@@ -15,4 +15,4 @@
 
 ### Видео демонстрация
 
-<img src="assets/VideoPreview.mp4" width="33%">
+<img src="assets/VideoPreview.gif" width="33%">
